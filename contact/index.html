@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Jocelyn Miao: Personal site and portfolio</title>
+    <title>Contact</title>
     <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
 <body>
     <nav>
     <ul>
@@ -18,8 +17,19 @@
     </ul>
     </nav>
     
-    <h1>Jocelyn Miao</h1>
-    <p>Hey, I'm Jocelyn, a data science student at UCSD! I'm passionate about economics and engineering. In my free time I love playing video games or doing nail art.</p>
-    <img src="images/leopard.jpg" width="500" alt="snow leopard smiling at camera with another one in the back">
+    <h1>Contact</h1>
+    <form action="mailto:jocelynmiao@hotmail.com" method="POST" enctype="text/plain">
+        <label>Email:
+            <input name="email" type="email"> 
+        </label>
+        <label>
+            Subject:<input name="subject"> 
+        </label>
+        <label>Body:
+            <textarea name="body"></textarea> 
+        </label>
+        <button>Submit</button>
+    </form>
+</form>
 </body>
 </html>
