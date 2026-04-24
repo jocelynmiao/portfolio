@@ -20,14 +20,14 @@ nav {
   --border-color: oklch(50% 10% 200 / 40%);
   display: flex;
   border-bottom: 1px solid var(--border-color);
+}
 
-  ul {
-    display: contents;
+nav ul {
+  display: contents;
+}
 
-    li {
-      display: contents;
-    }
-  }
+nav ul li {
+  display: contents;
 }
 
 a.current {
@@ -104,4 +104,20 @@ section {
 
 input, textarea, button, select {
   font-family: inherit;
+}
+
+#profile-stats dl {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  text-align: left; 
+}
+
+#profile-stats dt {
+  grid-row: 1; 
+  font-weight: bold;
+}
+
+#profile-stats dd {
+  grid-row: 2; 
+  margin: 0; 
 }
