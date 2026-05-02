@@ -80,7 +80,6 @@ if (form) {
 
 export async function fetchJSON(url) {
   try {
-    // Fetch the JSON file from the given URL
     const response = await fetch(url);
     console.log(response);
     if (!response.ok) {
@@ -102,7 +101,8 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
     article.innerHTML = `
       <${headingLevel}>${p.title}</${headingLevel}>
       <img src="${p.image}" alt="${p.title}">
-      <p>${p.description}</p>
+      <div> <p>${p.description}</p>
+      <p><i>${p.year}</i></p> </div>
     `;
 
     containerElement.appendChild(article);

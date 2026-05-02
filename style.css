@@ -121,3 +121,70 @@ input, textarea, button, select {
   grid-row: 2; 
   margin: 0; 
 }
+
+#projects-plot {
+  max-width: 20em;
+  margin-block: 2em;
+
+  overflow: visible;
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  gap: 1em; 
+  flex: 1;
+  list-style: none;
+  border: 1px solid #ccc;
+  padding: 1em;
+  border-radius: 8px;
+  margin: 0.1em
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5em; 
+}
+
+.swatch {
+  display: inline-block;          
+  width: 1em;
+  aspect-ratio: 1 / 1;            
+  background-color: var(--color); 
+  border-radius: 0.1em;          
+}
+
+.container {
+  display: flex;
+  align-items: flex-start;
+  gap: 2em;
+  align-items: center;
+}
+
+input[type="search"] {
+  width: 100%;
+  height: 30px;
+}
+
+&:has(path:hover) {
+  path:not(:hover) {
+    opacity: 0.5;
+  }
+}
+
+path {
+  transition: 300ms;
+}
+
+.selected {
+  --color: oklch(60% 45% 0) !important;
+
+  &:is(path) {
+    fill: var(--color);
+  }
+}
+
+path {
+  cursor: pointer;
+}
