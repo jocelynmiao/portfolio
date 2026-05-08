@@ -1,42 +1,44 @@
 function $$(selector, context = document) {
-    return Array.from(context.querySelectorAll(selector));
+  return Array.from(context.querySelectorAll(selector));
 }
 
 let pages = [
-  { url: '', title: 'Home' },
-  { url: 'projects/', title: 'Projects' },
-  { url: 'contact/', title: 'Contact' },
-  { url: 'CV/', title: 'CV' },
-  { url: 'https://github.com/jocelynmiao', title: 'Github' }
+  { url: "", title: "Home" },
+  { url: "projects/", title: "Projects" },
+  { url: "contact/", title: "Contact" },
+  { url: "CV/", title: "CV" },
+  { url: "meta/", title: "Meta" },
+  { url: "https://github.com/jocelynmiao", title: "Github" },
 ];
 
-const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
-  ? "/"                 
-  : "/portfolio/"; 
+const BASE_PATH =
+  location.hostname === "localhost" || location.hostname === "127.0.0.1"
+    ? "/"
+    : "/portfolio/";
 
-let nav = document.createElement('nav');
+let nav = document.createElement("nav");
 document.body.prepend(nav);
 
 for (let p of pages) {
   let url = p.url;
   let title = p.title;
-  let a = document.createElement('a');
-  url = !url.startsWith('http') ? BASE_PATH + url : url;
-  if (url.startsWith('http')) {
+  let a = document.createElement("a");
+  url = !url.startsWith("http") ? BASE_PATH + url : url;
+  if (url.startsWith("http")) {
     a.target = "_blank";
-    }
+  }
 
   a.href = url;
   if (a.host === location.host && a.pathname === location.pathname) {
-    a.classList.add('current');
-    }
+    a.classList.add("current");
+  }
 
   a.textContent = title;
   nav.append(a);
 }
 
 document.body.insertAdjacentHTML(
-  'afterbegin',
+  "afterbegin",
   `
 	<label class="color-scheme">
 		Theme:
@@ -48,29 +50,32 @@ document.body.insertAdjacentHTML(
 	</label>`,
 );
 
-const select = document.querySelector('.color-scheme select');
+const select = document.querySelector(".color-scheme select");
 
 if ("colorScheme" in localStorage) {
   const saved = localStorage.colorScheme;
-  document.documentElement.style.setProperty('color-scheme', saved);
-  select.value = saved; 
+  document.documentElement.style.setProperty("color-scheme", saved);
+  select.value = saved;
 }
 
-select.addEventListener('input', function (event) {
-  console.log('color scheme changed to', event.target.value);
-  document.documentElement.style.setProperty('color-scheme', event.target.value);
+select.addEventListener("input", function (event) {
+  console.log("color scheme changed to", event.target.value);
+  document.documentElement.style.setProperty(
+    "color-scheme",
+    event.target.value,
+  );
   localStorage.colorScheme = event.target.value;
 });
 
-const form = document.querySelector('form');
+const form = document.querySelector("form");
 
 if (form) {
-  form.addEventListener('submit', (event) => {
+  form.addEventListener("submit", (event) => {
     event.preventDefault();
     const data = new FormData(form);
     let params = [];
     for (let [name, value] of data) {
-        params.push(`${encodeURIComponent(name)}=${encodeURIComponent(value)}`);
+      params.push(`${encodeURIComponent(name)}=${encodeURIComponent(value)}`);
     }
     const url = form.action + "?" + params.join("&");
     console.log(url);
@@ -88,15 +93,15 @@ export async function fetchJSON(url) {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error fetching or parsing JSON data:', error);
+    console.error("Error fetching or parsing JSON data:", error);
   }
 }
 
-export function renderProjects(project, containerElement, headingLevel = 'h2') {
-  containerElement.innerHTML = '';
+export function renderProjects(project, containerElement, headingLevel = "h2") {
+  containerElement.innerHTML = "";
 
-  project.forEach(p => {
-    const article = document.createElement('article');
+  project.forEach((p) => {
+    const article = document.createElement("article");
 
     article.innerHTML = `
       <${headingLevel}>${p.title}</${headingLevel}>

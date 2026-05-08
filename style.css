@@ -31,9 +31,9 @@ nav ul li {
 }
 
 a.current {
-    border-bottom: 0.4em solid var(--border-color);
-    padding-bottom: 0.1em;
-  }
+  border-bottom: 0.4em solid var(--border-color);
+  padding-bottom: 0.1em;
+}
 
 a {
   flex: 1;
@@ -67,7 +67,7 @@ button {
 }
 
 .projects {
-  display: grid; 
+  display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
   gap: 1em;
 }
@@ -77,12 +77,17 @@ article {
   grid-template-rows: subgrid;
   grid-row: span 3;
   gap: 1em;
-  h2 { 
+  h2 {
     margin: 0;
   }
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   line-height: 1.1;
   text-wrap: balance;
 }
@@ -102,24 +107,27 @@ section {
   font-size: 80%;
 }
 
-input, textarea, button, select {
+input,
+textarea,
+button,
+select {
   font-family: inherit;
 }
 
 #profile-stats dl {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); 
-  text-align: left; 
+  grid-template-columns: repeat(4, 1fr);
+  text-align: left;
 }
 
 #profile-stats dt {
-  grid-row: 1; 
+  grid-row: 1;
   font-weight: bold;
 }
 
 #profile-stats dd {
-  grid-row: 2; 
-  margin: 0; 
+  grid-row: 2;
+  margin: 0;
 }
 
 #projects-plot {
@@ -132,27 +140,27 @@ input, textarea, button, select {
 .legend {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
-  gap: 1em; 
+  gap: 1em;
   flex: 1;
   list-style: none;
   border: 1px solid #ccc;
   padding: 1em;
   border-radius: 8px;
-  margin: 0.1em
+  margin: 0.1em;
 }
 
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 0.5em; 
+  gap: 0.5em;
 }
 
 .swatch {
-  display: inline-block;          
+  display: inline-block;
   width: 1em;
-  aspect-ratio: 1 / 1;            
-  background-color: var(--color); 
-  border-radius: 0.1em;          
+  aspect-ratio: 1 / 1;
+  background-color: var(--color);
+  border-radius: 0.1em;
 }
 
 .container {
