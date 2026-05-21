@@ -12,6 +12,12 @@
   <body>
     <h1>Meta</h1>
     <h2>Summary</h2>
+
+    <label>Show commits until:
+    <input type="range" min="0" max="100" value = "100" id="commit-progress">
+    <time id="commit-time"></time>
+    </label>
+
     <div id="stats"></div>
     <h2>Commits by time of day</h2>
     <div id="chart"></div>
@@ -31,7 +37,9 @@
       <dd id="commit-edits"></dd>
 
     </dl>
+
     <p id="selection-count">No commits selected</p>
     <dl id="language-breakdown" class="stats"></dl>
+
   </body>
 </html>
