@@ -47,7 +47,6 @@ a {
 a:hover {
   padding-bottom: 0.1em;
   border-bottom: 0.4em solid var(--color-accent);
-  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
 }
 
 form {
@@ -68,7 +67,6 @@ button {
 
 .projects {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
   gap: 1em;
 }
 
@@ -76,10 +74,7 @@ article {
   display: grid;
   grid-template-rows: subgrid;
   grid-row: span 3;
-  gap: 1em;
-  h2 {
-    margin: 0;
-  }
+  border-bottom: 2px solid oklch(50% 10% 200 / 40%);
 }
 
 h1,
