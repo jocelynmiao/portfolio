@@ -17,6 +17,7 @@ const BASE_PATH =
     : "/portfolio/";
 
 let nav = document.createElement("nav");
+nav.classList.add("site-nav");
 document.body.prepend(nav);
 
 for (let p of pages) {

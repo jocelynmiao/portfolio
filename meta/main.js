@@ -381,34 +381,7 @@ let commits = processCommits(data);
 renderCommitInfo(data, commits);
 renderScatterPlot(data, commits)
 
-const timeSlider = document.getElementById('commit-progress');
-const timeDisplay = document.getElementById('commit-time');
-
-let commitProgress = 100;
-
-let timeScale = d3
-  .scaleTime()
-  .domain([
-    d3.min(commits, (d) => d.datetime),
-    d3.max(commits, (d) => d.datetime),
-  ])
-  .range([0, 100]);
-
-let commitMaxTime = timeScale.invert(commitProgress);
 let filteredCommits = commits;
-
-function onTimeSliderChange() {
-  commitProgress = Number(timeSlider.value);
-  commitMaxTime = timeScale.invert(commitProgress);
-  timeDisplay.textContent = commitMaxTime.toLocaleString();
-  filteredCommits = commits.filter((d) => d.datetime <= commitMaxTime);
-  updateScatterPlot(data, filteredCommits);
-  updateCommitInfo(data, filteredCommits);
-  updateFileDisplay(filteredCommits);
-}
-
-timeSlider.addEventListener('input', onTimeSliderChange);
-onTimeSliderChange();
 
 d3.select('#scatter-story')
   .selectAll('.step')
@@ -422,7 +395,7 @@ d3.select('#scatter-story')
       timeStyle: 'short',
     })},
 		I made <a href="${d.url}" target="_blank">${
-      i > 0 ? 'another glorious commit' : 'my first commit, and it was glorious'
+      i > 0 ? 'another commit' : 'my first commit to this website'
     }</a>.
 		I edited ${d.totalLines} lines across ${
       d3.rollups(
@@ -431,14 +404,16 @@ d3.select('#scatter-story')
         (d) => d.file,
       ).length
     } files.
-		Then I looked over all I had made, and I saw that it was very good.
 	`,
   );
 
 function onStepEnter(response) {
-  console.log(response.element.__data__.datetime);
+  const commit = response.element.__data__;
+  filteredCommits = commits.filter((d) => d.datetime <= commit.datetime);
+  updateScatterPlot(data, filteredCommits);
+  updateCommitInfo(data, filteredCommits);
+  updateFileDisplay(filteredCommits);
 }
-
 const scroller = scrollama();
 scroller
   .setup({
